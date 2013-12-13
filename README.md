@@ -64,6 +64,11 @@ td-agent depends on those packages.
 * openssl, readline, libxslt, libxml2
 * [yamabiko-libyaml](https://github.com/y-ken/yamabiko-libyaml) (rpm) or libyaml (deb)
 
+# Copyright
+
+* Kentaro Yoshida ([@yoshi_ken](https://twitter.com/yoshi_ken))
+* (TreasureData; Original td-agent author) https://github.com/treasure-data/td-agent
+
 # License
 
 Released under the Apache2 license.

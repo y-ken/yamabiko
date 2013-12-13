@@ -5,8 +5,8 @@ License: APL2
 Release: 0%{?dist}
 
 Group: System Environment/Daemons
-Vendor: Treasure Data, Inc.
-URL: http://treasure-data.com/
+Vendor: Y-Ken Studio
+URL: https://github.com/y-ken/yamabiko
 Source: %{name}-%{version}.tar.gz
 Source1: %{name}.init
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
