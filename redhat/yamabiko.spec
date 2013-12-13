@@ -93,6 +93,10 @@ if [ -d "/tmp/yamabiko/" ]; then
   chown -R yamabiko:yamabiko /tmp/yamabiko/
 fi
 
+echo "install fluent-plugin-mysql-replicator..."
+GEMPATH=/usr/lib*/yamabiko/ruby/bin/gem
+$GEMPATH install --no-rdoc --no-ri fluent-plugin-mysql-replicator
+
 echo "Configure yamabiko to start, when booting up the OS..."
 /sbin/chkconfig --add yamabiko
 
