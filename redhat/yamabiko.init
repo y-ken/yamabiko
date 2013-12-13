@@ -1,51 +1,51 @@
 #!/bin/bash
 #
-# /etc/rc.d/init.d/td-agent
+# /etc/rc.d/init.d/yamabiko
 #
 # chkconfig: - 80 20
-# description: td-agent
-# processname: td-agent
-# pidfile: /var/run/td-agent/td-agent.pid
+# description: yamabiko
+# processname: yamabiko
+# pidfile: /var/run/yamabiko/yamabiko.pid
 #
 ### BEGIN INIT INFO
-# Provides:          td-agent
+# Provides:          yamabiko
 # Default-Stop:      0 1 6
 # Required-Start:    $local_fs
 # Required-Stop:     $local_fs
-# Short-Description: td-agent's init script
-# Description:       td-agent is a data collector
+# Short-Description: yamabiko's init script
+# Description:       yamabiko is a data collector
 ### END INIT INFO
 
 # Source function library.
 . /etc/init.d/functions
 
-name="td-agent"
-prog="td-agent"
-td_agent=/usr/lib/fluent/ruby/bin/ruby
-if [ -f "/usr/lib64/fluent/ruby/bin/ruby" ]; then
-	td_agent=/usr/lib64/fluent/ruby/bin/ruby
+name="yamabiko"
+prog="yamabiko"
+td_agent=/usr/lib/yamabiko/ruby/bin/ruby
+if [ -f "/usr/lib64/yamabiko/ruby/bin/ruby" ]; then
+	td_agent=/usr/lib64/yamabiko/ruby/bin/ruby
 fi
 
 if [ -f /etc/sysconfig/$prog ]; then
 	. /etc/sysconfig/$prog
 fi
-PIDFILE=${PIDFILE-/var/run/td-agent/$prog.pid}
-DAEMON_ARGS=${DAEMON_ARGS---user td-agent}
-TD_AGENT_ARGS="${TD_AGENT_ARGS-/usr/sbin/td-agent --group td-agent --log /var/log/td-agent/td-agent.log}"
+PIDFILE=${PIDFILE-/var/run/yamabiko/$prog.pid}
+DAEMON_ARGS=${DAEMON_ARGS---user yamabiko}
+TD_AGENT_ARGS="${TD_AGENT_ARGS-/usr/sbin/yamabiko --group yamabiko --log /var/log/yamabiko/yamabiko.log}"
 
 if [ -n "${PIDFILE}" ]; then
 	mkdir -p $(dirname ${PIDFILE})
-	chown -R td-agent:td-agent $(dirname ${PIDFILE})
+	chown -R yamabiko:yamabiko $(dirname ${PIDFILE})
 	TD_AGENT_ARGS="${TD_AGENT_ARGS} --daemon ${PIDFILE}"
 fi
 
 # 2012/04/17 Kazuki Ohta <k@treasure-data.com>
 # use jemalloc to avoid fragmentation
-if [ -f "/usr/lib/fluent/jemalloc/lib/libjemalloc.so" ]; then
-        export LD_PRELOAD=/usr/lib/fluent/jemalloc/lib/libjemalloc.so
+if [ -f "/usr/lib/yamabiko/jemalloc/lib/libjemalloc.so" ]; then
+        export LD_PRELOAD=/usr/lib/yamabiko/jemalloc/lib/libjemalloc.so
 fi
-if [ -f "/usr/lib64/fluent/jemalloc/lib/libjemalloc.so" ]; then
-        export LD_PRELOAD=/usr/lib64/fluent/jemalloc/lib/libjemalloc.so
+if [ -f "/usr/lib64/yamabiko/jemalloc/lib/libjemalloc.so" ]; then
+        export LD_PRELOAD=/usr/lib64/yamabiko/jemalloc/lib/libjemalloc.so
 fi
 
 RETVAL=0
@@ -87,7 +87,7 @@ reload() {
 }
 
 configtest() {
-	/usr/sbin/td-agent --user td-agent --group td-agent --dry-run -q
+	/usr/sbin/yamabiko --user yamabiko --group yamabiko --dry-run -q
 }
 
 case "$1" in
@@ -110,7 +110,7 @@ case "$1" in
         configtest
         ;;
     status)
-	status -p $PIDFILE 'td-agent'
+	status -p $PIDFILE 'yamabiko'
 	;;
     *)
 	echo "Usage: $prog {start|stop|reload|restart|condrestart|status|configtest}"

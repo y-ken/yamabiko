@@ -1,13 +1,13 @@
-/var/log/td-agent/td-agent.log {
+/var/log/yamabiko/yamabiko.log {
   daily
   rotate 30
   compress
   delaycompress
   notifempty
-  create 640 td-agent td-agent
+  create 640 yamabiko yamabiko
   sharedscripts
   postrotate
-    pid=/var/run/td-agent/td-agent.pid
+    pid=/var/run/yamabiko/yamabiko.pid
     test -s $pid && kill -USR1 "$(cat $pid)"
   endscript
 }

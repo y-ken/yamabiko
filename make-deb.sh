@@ -14,9 +14,9 @@ rm -fR td-agent_$version*
 rm -fR *.dsc
 cp -r fluentd $dst
 cp -r debian $dst
-cp td-agent.conf $dst
-cp td-agent.prelink.conf $dst
-cp td-agent.logrotate $dst
+cp yamabiko.conf $dst
+cp yamabiko.prelink.conf $dst
+cp yamabiko.logrotate $dst
 cp Makefile.am $dst
 cp autogen.sh $dst
 cp configure.in $dst

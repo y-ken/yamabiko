@@ -1,5 +1,5 @@
-Summary: td-agent
-Name: td-agent
+Summary: yamabiko
+Name: yamabiko
 Version: 1.1.18
 License: APL2
 Release: 0%{?dist}
@@ -13,7 +13,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 
 Requires: /usr/sbin/useradd /usr/sbin/groupadd
 Requires: /sbin/chkconfig
-Requires: openssl readline libxslt libxml2 td-libyaml
+Requires: openssl readline libxslt libxml2 yamabiko-libyaml mysql-devel
 Requires(pre): shadow-utils
 Requires(post): /sbin/chkconfig
 Requires(post): /sbin/service
@@ -53,77 +53,76 @@ mkdir -p $RPM_BUILD_ROOT/var/log/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-echo "adding 'td-agent' group..."
-getent group td-agent >/dev/null || /usr/sbin/groupadd -r td-agent
-echo "adding 'td-agent' user..."
-getent passwd td-agent >/dev/null || \
-  /usr/sbin/useradd -r -g td-agent -d %{_localstatedir}/lib/td-agent -s /sbin/nologin -c 'td-agent' td-agent
-chown -R td-agent:td-agent /var/log/%{name}
-if [ ! -e "/etc/td-agent/td-agent.conf" ]; then
+echo "adding 'yamabiko' group..."
+getent group yamabiko >/dev/null || /usr/sbin/groupadd -r yamabiko
+echo "adding 'yamabiko' user..."
+getent passwd yamabiko >/dev/null || \
+  /usr/sbin/useradd -r -g yamabiko -d %{_localstatedir}/lib/yamabiko -s /sbin/nologin -c 'yamabiko' yamabiko
+chown -R yamabiko:yamabiko /var/log/%{name}
+if [ ! -e "/etc/yamabiko/yamabiko.conf" ]; then
   echo "Installing default conffile $CONFFILE ..."
-  cp -f /etc/td-agent/td-agent.conf.tmpl /etc/td-agent/td-agent.conf
+  cp -f /etc/yamabiko/yamabiko.conf.tmpl /etc/yamabiko/yamabiko.conf
 fi
 
 # 2011/11/13 Kazuki Ohta <k@treasure-data.com>
 # This prevents prelink, to break the Ruby intepreter.
 if [ -d "/etc/prelink.conf.d/" ]; then
-  echo "prelink detected. Installing /etc/prelink.conf.d/td-agent-ruby.conf ..."
-  cp -f /etc/td-agent/prelink.conf.d/td-agent.conf /etc/prelink.conf.d/td-agent-ruby.conf
+  echo "prelink detected. Installing /etc/prelink.conf.d/yamabiko-ruby.conf ..."
+  cp -f /etc/yamabiko/prelink.conf.d/yamabiko.conf /etc/prelink.conf.d/yamabiko-ruby.conf
 elif [ -f "/etc/prelink.conf" ]; then
-  if [ $(grep '\-b /usr/lib{,64}/fluent/ruby/bin/ruby' -c /etc/prelink.conf) -eq 0 ]; then
+  if [ $(grep '\-b /usr/lib{,64}/yamabiko/ruby/bin/ruby' -c /etc/prelink.conf) -eq 0 ]; then
     echo "prelink detected, but /etc/prelink.conf.d/ dosen't exist. Adding /etc/prelink.conf ..."
-    echo "-b /usr/lib{,64}/fluent/ruby/bin/ruby" >> /etc/prelink.conf
+    echo "-b /usr/lib{,64}/yamabiko/ruby/bin/ruby" >> /etc/prelink.conf
   fi
 fi
 
 # 2013/03/04 Kazuki Ohta <k@treasure-data.com>
 # Install log rotation script.
 if [ -d "/etc/logrotate.d/" ]; then
-  cp -f /etc/td-agent/logrotate.d/td-agent.logrotate /etc/logrotate.d/td-agent
+  cp -f /etc/yamabiko/logrotate.d/yamabiko.logrotate /etc/logrotate.d/yamabiko
 fi
 
 # 2011/11/13 Kazuki Ohta <k@treasure-data.com>
-# Before td-agent v1.1.0, fluentd has a bug of loading plugin before changing
+# Before yamabiko v1.1.0, fluentd has a bug of loading plugin before changing
 # to the right user. Then, these directories were created with root permission.
 # The following lines fix that problem.
-if [ -d "/var/log/td-agent/buffer/" ]; then
-  chown -R td-agent:td-agent /var/log/td-agent/buffer/
+if [ -d "/var/log/yamabiko/buffer/" ]; then
+  chown -R yamabiko:yamabiko /var/log/yamabiko/buffer/
 fi
-if [ -d "/tmp/fluent/" ]; then
-  chown -R td-agent:td-agent /tmp/fluent/
+if [ -d "/tmp/yamabiko/" ]; then
+  chown -R yamabiko:yamabiko /tmp/yamabiko/
 fi
 
-echo "Configure td-agent to start, when booting up the OS..."
-/sbin/chkconfig --add td-agent
+echo "Configure yamabiko to start, when booting up the OS..."
+/sbin/chkconfig --add yamabiko
 
 # 2011/03/24 Kazuki Ohta <k@treasure-data.com>
 # When upgrade, restart agent if it's launched
 if [ "$1" = "2" ]; then
-  /sbin/service td-agent condrestart >/dev/null 2>&1 || :
+  /sbin/service yamabiko condrestart >/dev/null 2>&1 || :
 fi
 
 %preun
 # 2011/02/21 Kazuki Ohta <k@treasure-data.com>
-# Just leave this file, because this line could delete td-agent.conf in a
+# Just leave this file, because this line could delete yamabiko.conf in a
 # *UPGRADE* process :-(
-# if [ -e "/etc/prelink.conf.d/td-agent-ruby.conf" ]; then
-#   echo "Uninstalling /etc/prelink.conf.d/td-agent-ruby.conf ..."
-#   rm -f /etc/prelink.conf.d/td-agent-ruby.conf
+# if [ -e "/etc/prelink.conf.d/yamabiko-ruby.conf" ]; then
+#   echo "Uninstalling /etc/prelink.conf.d/yamabiko-ruby.conf ..."
+#   rm -f /etc/prelink.conf.d/yamabiko-ruby.conf
 # fi
 if [ $1 = 0 ] ; then
-  echo "Stopping td-agent ..."
-  /sbin/service td-agent stop >/dev/null 2>&1 || :
-  /sbin/chkconfig --del td-agent
+  echo "Stopping yamabiko ..."
+  /sbin/service yamabiko stop >/dev/null 2>&1 || :
+  /sbin/chkconfig --del yamabiko
 fi
 
 %files
 %defattr(-,root,root)
-/usr/bin/td
-/usr/sbin/td-agent
-/usr/%{_lib}/fluent
-/etc/td-agent
-/etc/init.d/td-agent
-/var/log/td-agent
+/usr/sbin/yamabiko
+/usr/%{_lib}/yamabiko
+/etc/yamabiko
+/etc/init.d/yamabiko
+/var/log/yamabiko
 
 %changelog
 * Thu Dec 5 2013 Masahiro Nakagawa <masa@treasure-data.com>

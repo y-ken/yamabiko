@@ -19,9 +19,9 @@ if test "$prefix" = "NONE"; then
     prefix=$ac_default_prefix
 fi
 exec_prefix=$prefix
-jemalloc_prefix=`eval echo $libdir/fluent/jemalloc`
-ruby_prefix=`eval echo $libdir/fluent/ruby`
-libyaml_prefix=`eval echo $libdir/fluent/libyaml`
+jemalloc_prefix=`eval echo $libdir/yamabiko/jemalloc`
+ruby_prefix=`eval echo $libdir/yamabiko/ruby`
+libyaml_prefix=`eval echo $libdir/yamabiko/libyaml`
 
 exec_prefix=$orig_exec_prefix
 prefix=$orig_prefix

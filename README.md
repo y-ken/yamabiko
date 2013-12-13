@@ -47,7 +47,7 @@ Please refer the document (http://docs.treasure-data.com).
 
 # Notice
 
-td-agent consists of the following components, and packaged as rpm/deb.
+yamabiko consists of the following components, and packaged as rpm/deb.
 
 * ruby (1.9.3-p194): http://www.ruby-lang.org/en/
 * jemalloc: http://www.canonware.com/jemalloc/
@@ -62,7 +62,7 @@ td-agent consists of the following components, and packaged as rpm/deb.
 td-agent depends on those packages.
 
 * openssl, readline, libxslt, libxml2
-* [td-libyaml](https://github.com/treasure-data/td-libyaml) (rpm) or libyaml (deb)
+* [yamabiko-libyaml](https://github.com/y-ken/yamabiko-libyaml) (rpm) or libyaml (deb)
 
 # License
 

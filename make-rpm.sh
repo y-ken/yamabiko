@@ -1,6 +1,6 @@
 #!/bin/bash
 version=`cat VERSION`
-dst=td-agent-$version
+dst=yamabiko-$version
 rev=`cat REVISION`
 cur=`pwd`
 
@@ -21,12 +21,12 @@ git checkout $rev
 cd ..
 rm -fR $dst
 mv fluentd $dst
-cp td-agent.conf $dst
-cp td-agent.prelink.conf $dst
+cp yamabiko.conf $dst
+cp yamabiko.prelink.conf $dst
 cp Makefile.am $dst
 cp autogen.sh $dst
 cp configure.in $dst
-cp ./td-agent.logrotate $dst
+cp ./yamabiko.logrotate $dst
 tar czf $dst.tar.gz $dst
 rm -fR $dst
 
@@ -39,15 +39,15 @@ mkdir rpmbuild
 pushd rpmbuild
 mkdir BUILD RPMS SOURCES SPECS SRPMS
 # locate spec
-cp ../redhat/td-agent.spec SPECS
+cp ../redhat/yamabiko.spec SPECS
 # locate source tarball
 mv ../$dst.tar.gz SOURCES
 # locate init.d script
-cp ../redhat/td-agent.init SOURCES
+cp ../redhat/yamabiko.init SOURCES
 # build
 if [ -z "$rpm_dist" ]; then
-  my_rpmbuild -v -ba --clean SPECS/td-agent.spec
+  my_rpmbuild -v -ba --clean SPECS/yamabiko.spec
 else
-  my_rpmbuild -v -ba --define "dist .${rpm_dist}" --clean SPECS/td-agent.spec
+  my_rpmbuild -v -ba --define "dist .${rpm_dist}" --clean SPECS/yamabiko.spec
 fi
 popd
