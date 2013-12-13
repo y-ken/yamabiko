@@ -52,10 +52,17 @@ yamabiko consists of the following components, and packaged as rpm/deb.
 * fluentd: https://github.com/fluent/fluentd
 * fluent-plugin-mysql-replicator: https://github.com/y-ken/fluent-plugin-mysql-replicator
 
-td-agent depends on those packages.
+yamabiko depends on those packages.
 
 * openssl, readline, libxslt, libxml2
 * [yamabiko-libyaml](https://github.com/y-ken/yamabiko-libyaml) (rpm) or libyaml (deb)
+
+# TODO
+
+Pull requests are very welcome like below!!
+
+* support debian
+* support homebrew
 
 # Copyright
 
