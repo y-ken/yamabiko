@@ -125,7 +125,6 @@ fi
 
 %files
 %defattr(-,root,root)
-%config(noreplace,missingok) %{_sysconfdir}/yamabiko/yamabiko.conf
 /usr/sbin/yamabiko
 /usr/%{_lib}/yamabiko
 /etc/yamabiko
