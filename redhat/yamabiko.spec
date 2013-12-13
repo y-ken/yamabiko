@@ -48,6 +48,9 @@ mkdir -p $RPM_BUILD_ROOT/etc/init.d/
 install -m 755 %{S:1} $RPM_BUILD_ROOT/etc/init.d/%{name}
 # create log dir
 mkdir -p $RPM_BUILD_ROOT/var/log/%{name}
+# Grep reports BUILDROOT inside our object files; disable that test.
+QA_SKIP_BUILD_ROOT=1
+export QA_SKIP_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
