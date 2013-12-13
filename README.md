@@ -1,8 +1,9 @@
 # About
 
-The event collector daemon, for Treasure Data. This daemon collects various types of logs/events via various way, and transfer them to the cloud. For more about Treasure Data, see the [homepage](http://treasure-data.com/), and the [documentation](http://docs.treasure-data.com/).
+Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch nodes.  
+In the future, it's comming support replicate to another RDB/noSQL.
 
-td-agent is open sourced as [fluentd project](http://github.com/fluent/). In other words, td-agent is a distribution package of fluentd.
+This product is based on Fluentd which maintained at [fluentd project](http://github.com/fluent/).
 
 # Requirement
 
@@ -41,10 +42,6 @@ If you use specific revision of fluentd...
 ```bash
 $ ./make-rpm.sh e20137ce1f92c4e364d304969f56bf41e713ee07
 ```
-
-# Install and Setup
-
-Please refer the document (http://docs.treasure-data.com).
 
 # Notice
 
