@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Yamabiko : Yamabiko (Fluentd based MySQL/MariaDB Replicator for Elasticsearch)" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Yamabiko</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/y-ken/yamabiko">View on GitHub</a>
+
+          <h1 id="project_title">Yamabiko</h1>
+          <h2 id="project_tagline">Yamabiko (Fluentd based MySQL/MariaDB Replicator for Elasticsearch)</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/y-ken/yamabiko/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/y-ken/yamabiko/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
+
+<p>Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch nodes.<br>
+In the future, it's comming support replicate to another RDB/noSQL.</p>
+
+<p>This product is based on Fluentd which maintained at <a href="http://github.com/fluent/">fluentd project</a>.</p>
+
+<h1>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>Please check the url below.<br><a href="https://github.com/y-ken/fluent-plugin-mysql-replicator">https://github.com/y-ken/fluent-plugin-mysql-replicator</a></p>
+
+<h1>
+<a name="requirement" class="anchor" href="#requirement"><span class="octicon octicon-link"></span></a>Requirement</h1>
+
+<ul>
+<li>mysql-devel</li>
+</ul><h1>
+<a name="component" class="anchor" href="#component"><span class="octicon octicon-link"></span></a>Component</h1>
+
+<p>yamabiko consists of the following components, and packaged as rpm/deb.</p>
+
+<ul>
+<li>ruby (1.9.3-p194): <a href="http://www.ruby-lang.org/en/">http://www.ruby-lang.org/en/</a>
+</li>
+<li>jemalloc: <a href="http://www.canonware.com/jemalloc/">http://www.canonware.com/jemalloc/</a>
+</li>
+<li>fluentd: <a href="https://github.com/fluent/fluentd">https://github.com/fluent/fluentd</a>
+</li>
+<li>fluent-plugin-mysql-replicator: <a href="https://github.com/y-ken/fluent-plugin-mysql-replicator">https://github.com/y-ken/fluent-plugin-mysql-replicator</a>
+</li>
+</ul><p>yamabiko depends on those packages.</p>
+
+<ul>
+<li>openssl, readline, libxslt, libxml2</li>
+<li>
+<a href="https://github.com/y-ken/yamabiko-libyaml">yamabiko-libyaml</a> (rpm) or libyaml (deb)</li>
+</ul><h1>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h1>
+
+<p>Pull requests are very welcome like below!!</p>
+
+<ul>
+<li>support debian</li>
+<li>support homebrew</li>
+</ul><h1>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>Copyright</h1>
+
+<ul>
+<li>Kentaro Yoshida (<a href="https://twitter.com/yoshi_ken">@yoshi_ken</a>)</li>
+<li>(TreasureData; Original td-agent author) <a href="https://github.com/treasure-data/td-agent">https://github.com/treasure-data/td-agent</a>
+</li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Released under the Apache2 license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Yamabiko maintained by <a href="https://github.com/y-ken">y-ken</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-32350783-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
