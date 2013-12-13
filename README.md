@@ -5,7 +5,12 @@ In the future, it's comming support replicate to another RDB/noSQL.
 
 This product is based on Fluentd which maintained at [fluentd project](http://github.com/fluent/).
 
-# Requirement
+# Configuration
+
+Please check the url below.  
+https://github.com/y-ken/fluent-plugin-mysql-replicator
+
+# Build Requirement
 
 * openssl
 * pbuilder
