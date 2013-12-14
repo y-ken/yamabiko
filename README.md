@@ -7,8 +7,13 @@ This product is based on Fluentd which maintained at [fluentd project](http://gi
 
 # Configuration
 
-Please check the url below.  
+Please follow the core plugin (fluent-plugin-mysql-replicator) repository page below.  
 https://github.com/y-ken/fluent-plugin-mysql-replicator
+
+# Download RPM packages
+
+It has released at this page.  
+https://github.com/y-ken/yamabiko/releases
 
 # Build Requirement
 
