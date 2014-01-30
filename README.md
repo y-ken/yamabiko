@@ -1,57 +1,19 @@
 # About
 
-Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch nodes.  
+Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch/Solr nodes.  
 In the future, it's comming support replicate to another RDB/noSQL.
 
 This product is based on Fluentd which maintained at [fluentd project](http://github.com/fluent/).
 
 # Configuration
 
-Please follow the core plugin (fluent-plugin-mysql-replicator) repository page below.  
+Please refer the core plugin (fluent-plugin-mysql-replicator) repository page.  
 https://github.com/y-ken/fluent-plugin-mysql-replicator
 
-# Download RPM packages
+# Download
 
-It has released at this page.  
+RPM package has released at this page.  
 https://github.com/y-ken/yamabiko/releases
-
-# Build Requirement
-
-* openssl
-* pbuilder
-* mysql-devel
-
-# Prepare
-
-This script will create the debian environments by pbuilder-dist.
-
-# Build
-
-## deb
-
-For the first time, you need to prepare chroot environments for each distribution. This takes a time.
-
-```bash
-$ ./make-deb-init.sh
-```
-
-Then, execute make-deb.sh.
-
-```bash
-$ ./make-deb.sh
-```
-
-## rpm
-
-```bash
-$ ./make-rpm.sh
-```
-
-If you use specific revision of fluentd...
-
-```bash
-$ ./make-rpm.sh e20137ce1f92c4e364d304969f56bf41e713ee07
-```
 
 # Notice
 
@@ -64,12 +26,17 @@ yamabiko consists of the following components, and packaged as rpm/deb.
 
 yamabiko depends on those packages.
 
-* openssl, readline, libxslt, libxml2
+* openssl, readline, libxslt, libxml2, mysql-devel
 * [yamabiko-libyaml](https://github.com/y-ken/yamabiko-libyaml) (rpm) or libyaml (deb)
+
+# Articles
+
+* Fluentdベースのミドルウェア"Yamabiko"でMySQLのテーブルをElasticsearchへレプリケートする話  
+http://www.slideshare.net/y-ken/yamabiko-replicate-mysql-table-to-elasticsearch
 
 # TODO
 
-Pull requests are very welcome like below!!
+Pull requests are very welcome.
 
 * support debian
 * support homebrew
