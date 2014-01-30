@@ -13,7 +13,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 
 Requires: /usr/sbin/useradd /usr/sbin/groupadd
 Requires: /sbin/chkconfig
-Requires: openssl readline libxslt libxml2 yamabiko-libyaml mysql-devel
+Requires: openssl readline libxslt libxml2 yamabiko-libyaml
 Requires(pre): shadow-utils
 Requires(post): /sbin/chkconfig
 Requires(post): /sbin/service
@@ -29,6 +29,12 @@ BuildRequires: gcc gcc-c++ pkgconfig libtool openssl-devel readline-devel libxsl
 %description
 
 %prep
+# check mysql-devel is installed
+if [ -z "`which mysql_config`" ]
+then
+  echo 'Requires: mysql-devel or MySQL-devel'
+  exit 1
+fi
 
 %setup -q
 
