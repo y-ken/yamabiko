@@ -2,7 +2,7 @@ Summary: yamabiko
 Name: yamabiko
 Version: 1.1.18
 License: APL2
-Release: 0%{?dist}
+Release: 1%{?dist}
 
 Group: System Environment/Daemons
 Vendor: Y-Ken Studio
