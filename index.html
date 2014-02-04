@@ -34,7 +34,7 @@
         <h1>
 <a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
 
-<p>Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch nodes.<br>
+<p>Yamabiko is a middleware that track insert/update/delete event from MySQL database and multiple table replication into Elasticsearch/Solr nodes.<br>
 In the future, it's comming support replicate to another RDB/noSQL.</p>
 
 <p>This product is based on Fluentd which maintained at <a href="http://github.com/fluent/">fluentd project</a>.</p>
@@ -42,17 +42,23 @@ In the future, it's comming support replicate to another RDB/noSQL.</p>
 <h1>
 <a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
 
-<p>Please check the url below.<br><a href="https://github.com/y-ken/fluent-plugin-mysql-replicator">https://github.com/y-ken/fluent-plugin-mysql-replicator</a></p>
+<p>Please refer the core plugin (fluent-plugin-mysql-replicator) repository page.<br><a href="https://github.com/y-ken/fluent-plugin-mysql-replicator">https://github.com/y-ken/fluent-plugin-mysql-replicator</a></p>
 
 <h1>
-<a name="requirement" class="anchor" href="#requirement"><span class="octicon octicon-link"></span></a>Requirement</h1>
+<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h1>
+
+<p>RPM package has released at this page.<br><a href="https://github.com/y-ken/yamabiko/releases">https://github.com/y-ken/yamabiko/releases</a></p>
+
+<h1>
+<a name="articles" class="anchor" href="#articles"><span class="octicon octicon-link"></span></a>Articles</h1>
 
 <ul>
-<li>mysql-devel</li>
+<li>Fluentdベースのミドルウェア"Yamabiko"でMySQLのテーブルをElasticsearchへレプリケートする話<br><a href="http://www.slideshare.net/y-ken/yamabiko-replicate-mysql-table-to-elasticsearch">http://www.slideshare.net/y-ken/yamabiko-replicate-mysql-table-to-elasticsearch</a>
+</li>
 </ul><h1>
-<a name="component" class="anchor" href="#component"><span class="octicon octicon-link"></span></a>Component</h1>
+<a name="notice" class="anchor" href="#notice"><span class="octicon octicon-link"></span></a>Notice</h1>
 
-<p>yamabiko consists of the following components, and packaged as rpm/deb.</p>
+<p>Yamabiko is made up of the following components, and packaged as rpm/deb.</p>
 
 <ul>
 <li>ruby (1.9.3-p194): <a href="http://www.ruby-lang.org/en/">http://www.ruby-lang.org/en/</a>
@@ -63,16 +69,16 @@ In the future, it's comming support replicate to another RDB/noSQL.</p>
 </li>
 <li>fluent-plugin-mysql-replicator: <a href="https://github.com/y-ken/fluent-plugin-mysql-replicator">https://github.com/y-ken/fluent-plugin-mysql-replicator</a>
 </li>
-</ul><p>yamabiko depends on those packages.</p>
+</ul><p>Yamabiko depends on those packages.</p>
 
 <ul>
-<li>openssl, readline, libxslt, libxml2</li>
+<li>openssl, readline, libxslt, libxml2, mysql-devel</li>
 <li>
 <a href="https://github.com/y-ken/yamabiko-libyaml">yamabiko-libyaml</a> (rpm) or libyaml (deb)</li>
 </ul><h1>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h1>
 
-<p>Pull requests are very welcome like below!!</p>
+<p>Pull requests are very welcome.</p>
 
 <ul>
 <li>support debian</li>
